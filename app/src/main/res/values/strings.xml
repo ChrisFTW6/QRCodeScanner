@@ -1,0 +1,4 @@
+<resources>
+	<string name="app_name">Qr Detector</string>
+	<string name="error_camera">Camera permission needed</string>
+</resources>

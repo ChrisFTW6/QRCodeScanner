@@ -1,5 +1,6 @@
 package akka.technologies.app.scancode;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -25,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.IOException;
 
 public class ScannerActivity extends AppCompatActivity implements View.OnClickListener {
-	
+	private boolean checked = false;
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate (savedInstanceState);
@@ -81,6 +82,7 @@ public class ScannerActivity extends AppCompatActivity implements View.OnClickLi
 			@Override
 			public void receiveDetections (Detector.Detections<Barcode> detections) {
 				final SparseArray<Barcode> barcodeSparseArray = detections.getDetectedItems ();
+				
 				if(barcodeSparseArray.size () != 0){
 					String container = barcodeSparseArray.valueAt(0).displayValue;
 					final String[] parseArray = container.split(",");
@@ -95,21 +97,32 @@ public class ScannerActivity extends AppCompatActivity implements View.OnClickLi
 						public void onDataChange(DataSnapshot dataSnapshot) {
 							// This method is called once with the initial value and again
 							// whenever data at this location is updated.
-
+							if (checked) return;
+							checked = true;
 							String firstNameValue = dataSnapshot.child("FirstName").getValue(String.class);
 							String lastNameValue = dataSnapshot.child("LastName").getValue(String.class);
 							Integer flagValue = dataSnapshot.child("Flag").getValue(Integer.class);
+
+							Intent goBackIntent = new Intent(getApplicationContext(), MainActivity.class);
+							Bundle info = new Bundle();
+							info.putString("Name", firstNameValue);
+							info.putString("LastName", lastNameValue);
+							info.putInt("Flag", flagValue);
+
 							if (firstNameValue.equals(parseArray[1]) && lastNameValue.equals(parseArray[2])) {
 								//If the flag is zero, that means the participant is not scanned yet!
 								if (flagValue != null && flagValue == 0) {
 									flagReference.setValue(1);
+									info.putString("Message", "Congratulations, You can go in");
 								} else {
-									Log.d("is******************", "It's already checked!");
+									info.putString("Message", "This person is already checked");
 								}
-							} else {
-								Log.d("FLAG DATABASE: ", "It's not the same");
-							}
 
+							} else {
+								info.putString("Message", "Sorry, this guy is not in the list");
+							}
+							goBackIntent.putExtras(info);
+							startActivity(goBackIntent);
 						}
 
 						@Override

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "92307373088",
+    "firebase_url": "https://qr-code-akka.firebaseio.com",
+    "project_id": "qr-code-akka",
+    "storage_bucket": "qr-code-akka.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:92307373088:android:87de0cc90b739b33",
+        "android_client_info": {
+          "package_name": "akka.technologies.app.scancode"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "92307373088-mq07bkk9m862ragvupb40lj1nba191fg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "akka.technologies.app.scancode",
+            "certificate_hash": "b57d1dbde1cccba4c91862c240cda115036e43b4"
+          }
+        },
+        {
+          "client_id": "92307373088-pvesuh0usaf4s20hi4hka9jfdtj94ukf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJ4fvmXvUkS0Qx-tm_81ffMm-UHxL8CEQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "92307373088-pvesuh0usaf4s20hi4hka9jfdtj94ukf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

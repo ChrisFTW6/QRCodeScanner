@@ -1,4 +1,5 @@
 <resources>
-	<string name="app_name">Qr Detector</string>
-	<string name="error_camera">Camera permission needed</string>
+    <string name="app_name">Qr Detector</string>
+    <string name="error_camera">Camera permission needed</string>
+    <string name="title_activity_main">MainActivity</string>
 </resources>
